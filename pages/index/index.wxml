@@ -22,6 +22,7 @@
     <text  class="user-motto">{{openid}}</text>
     <button  bindtap="gettoken">获取token</button>
     <text class="user-motto">{{token}}</text>
-    
+    <button  bindtap="scancode">扫码</button>
+    <button  bindtap="gotomap">地图</button>
   </view>
 </view>

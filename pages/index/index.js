@@ -19,6 +19,38 @@ Page({
       url: '../logs/logs'
     })
   },
+  gotomap(){
+    wx.navigateTo({
+      url: '../map/map'
+    })
+
+  },
+  scancode(){
+////////////////////////////////////////////
+wx.scanCode({
+  onlyFromCamera: false,   //值为 false  既可以使用相机也可以使用相册，  值为true 只能使用相机
+  scanType: ['barCode', 'qrCode', 'datamatrix', 'pdf417'], //分别对应 一维码  二维码  DataMatrix码 PDF417条码  
+  success: async (res) => { //扫码成功后
+       console.log(res.result)
+      //res.result		所扫码的内容
+      //res.scanType		所扫码的类型
+      //res.charSet		所扫码的字符集
+      //res.path			当所扫的码为当前小程序二维码时，会返回此字段，内容为二维码携带的 path
+      //res.rawData		原始数据，base64编码
+  },
+  fail: (res) => {//扫码失败后
+      wx.showToast({
+          title: '扫码失败',
+          icon: 'loading',
+          duration: 1500
+      })
+  },
+})
+
+
+
+////////////////////////////////////////////////
+  },
   onLoad() {
     
     if (wx.getUserProfile) {
